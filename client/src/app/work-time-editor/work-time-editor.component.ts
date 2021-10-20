@@ -12,7 +12,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     styleUrls: [ './work-time-editor.component.scss' ]
 })
 export class WorkTimeEditorComponent implements OnInit {
-    workItemForm!: FormGroup;
+    workItemForm: FormGroup = this.formBuilder.group({
+        project: [ '', [ Validators.required ] ],
+        date: [ '', [ Validators.required ] ],
+        start: [ '', [ Validators.required ] ],
+        end: [ '', [ Validators.required ] ],
+        comment: [ '' ]
+    });
 
     constructor(private readonly formBuilder: FormBuilder, private readonly workItemApiService: WorkItemApiService,
                 private readonly matDialogRef: MatDialogRef<WorkTimeEditorComponent>,
@@ -20,27 +26,13 @@ export class WorkTimeEditorComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.data?.id)
         if (this.data?.id) {
             this.workItemApiService.getById(this.data.id).pipe(
                 take(1),
             ).subscribe(workItem => {
-                this.workItemForm = this.formBuilder.group({
-                    project: [ workItem.project, [ Validators.required ] ],
-                    date: [ '', [ Validators.required ] ],
-                    start: [ '', [ Validators.required ] ],
-                    end: [ '', [ Validators.required ] ],
-                    comment: [ workItem.comment ]
-                });
+                this.workItemForm.controls['project'].setValue( workItem.project);
+                this.workItemForm.controls['comment'].setValue( workItem.comment);
             })
-        } else {
-            this.workItemForm = this.formBuilder.group({
-                project: [ '', [ Validators.required ] ],
-                date: [ '', [ Validators.required ] ],
-                start: [ '', [ Validators.required ] ],
-                end: [ '', [ Validators.required ] ],
-                comment: [ '' ]
-            });
         }
 
     }
