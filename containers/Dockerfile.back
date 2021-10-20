@@ -1,0 +1,7 @@
+FROM node:16
+EXPOSE 5000
+WORKDIR /opt/app
+COPY ./mern_stack/server/package*.json .
+RUN npm install
+COPY ./mern_stack/server/index.js .
+CMD ["node", "/opt/app"]
