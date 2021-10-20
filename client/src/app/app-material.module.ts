@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   exports: [
@@ -34,6 +35,7 @@ import { MatTableModule } from '@angular/material/table';
     NgxMaterialTimepickerModule,
     MatProgressBarModule,
     MatTableModule,
+    MatDialogModule,
   ],
   providers: [
     MatDatepickerModule,

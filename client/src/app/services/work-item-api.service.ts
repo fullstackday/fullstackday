@@ -19,8 +19,18 @@ export class WorkItemApiService {
         return this.http.get<WorkItem[]>(this.ApiUrl);
     }
 
+    getById(id: string): Observable<WorkItem> {
+        return this.http.get<WorkItem>(`${this.ApiUrl}/${id}`);
+    }
+
     save(workItem: WorkItem) {
         return this.http.post(this.ApiUrl, workItem).pipe(
+            concatMap(() => this.getAll())
+        );
+    }
+
+    update(workItem: WorkItem, id: string) {
+        return this.http.put(`${this.ApiUrl}/${id}`, workItem).pipe(
             concatMap(() => this.getAll())
         );
     }
