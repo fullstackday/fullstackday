@@ -1,0 +1,39 @@
+<mat-card>
+    <form [formGroup]="workItemForm" (ngSubmit)="saveItem()">
+        <div class="full-width">
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Projekt Name</mat-label>
+                <input formControlName="project" matInput placeholder="Name des Projektes">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Datum</mat-label>
+                <input formControlName="date" matInput [matDatepicker]="startdate">
+                <mat-datepicker-toggle matSuffix [for]="startdate"></mat-datepicker-toggle>
+                <mat-datepicker #startdate></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Start</mat-label>
+                <input placeholder="Start" matInput aria-label="Start"
+                       [ngxTimepicker]="start" [format]="24" formControlName="start" readonly>
+                <ngx-material-timepicker #start [enableKeyboardInput]="true" ></ngx-material-timepicker>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Ende</mat-label>
+                <input placeholder="Ende" matInput aria-label="Ende"
+                       [ngxTimepicker]="end" [format]="24" formControlName="end" readonly>
+                <ngx-material-timepicker #end [enableKeyboardInput]="true" ></ngx-material-timepicker>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Kommentar</mat-label>
+                <input formControlName="comment" matInput placeholder="Kommentar">
+            </mat-form-field>
+        </div>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="accent" (click)="reset()">Reset</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!workItemForm.valid">Save</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

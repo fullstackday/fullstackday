@@ -1,0 +1,6 @@
+<app-header></app-header>
+
+<div class="container" *ngIf="workItemList$ | async as workItemList">
+    <app-work-time-editor (save)="save($event)"></app-work-time-editor>
+    <app-work-time-list [workItems]="workItemList" (delete)="delete($event)" (edit)="edit($event)"></app-work-time-list>
+</div>
