@@ -83,7 +83,7 @@ jobs:
         image: mongodb
         tags: v1 ${{ github.sha }} latest
         containerfiles: |
-          ./containers/containerfiles/Dockerfile/mongodb
+          ./containers/containerfiles/Dockerfile.mongodb
     - name: Push to registry
       id: push_db
       uses: redhat-actions/push-to-registry@v2
