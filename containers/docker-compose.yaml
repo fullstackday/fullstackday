@@ -1,0 +1,16 @@
+version: "3"
+services:
+  mongo:
+    image: fullstackday/mongo
+    ports:
+    - "27017:27017"
+  backend:
+    image: fullstackday/backend
+    depends_on:
+    - mongo 
+    ports:  
+    - "3000:3000" 
+  client:
+    image: fullstackday/client
+    ports:
+      - "8080:80"
