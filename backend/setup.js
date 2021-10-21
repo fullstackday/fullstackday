@@ -7,8 +7,8 @@ let res = [
   db.records.drop(),
   db.records.createIndex({ project: 1 }),
   db.records.insert({
-    start: 1234,
-    end: 12345,
+    start: 1634837535000,
+    end: 1634838535000,
     project: 'Test',
   }),
 ];
