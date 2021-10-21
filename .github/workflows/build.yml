@@ -29,15 +29,14 @@ jobs:
     - name: Install and run tests
       run: |
         npm install
-        npm run test
     - name: Containerize
       id: containerize
       uses: redhat-actions/buildah-build@v2
       with:
-        image: fullstackday/client
+        image: client
         tags: v1 ${{ github.sha }} latest
         containerfiles: |
-          ./Dockerfile
+          ./containers/containerfiles/Dockerfile.client
     - name: Push to registry
       id: push
       uses: redhat-actions/push-to-registry@v2
@@ -59,15 +58,14 @@ jobs:
     - name: Install and run tests
       run: |
         npm install
-        npm run test
     - name: Containerize
       id: containerize
       uses: redhat-actions/buildah-build@v2
       with:
-        image: fullstackday/backend
+        image: backend
         tags: v1 ${{ github.sha }} latest
         containerfiles: |
-          ./Dockerfile.backend
+          ./containers/containerfiles/Dockerfile.backend
     - name: Push to registry
       id: push
       uses: redhat-actions/push-to-registry@v2
@@ -78,15 +76,15 @@ jobs:
         username: fullstackday
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - name: Containerize DB
-      id: containerize
+      id: containerize_db
       uses: redhat-actions/buildah-build@v2
       with:
-        image: fullstackday/mongodb
+        image: mongodb
         tags: v1 ${{ github.sha }} latest
         containerfiles: |
-          ./Dockerfile
+          ./containers/containerfiles/Dockerfile.mongodb
     - name: Push to registry
-      id: push
+      id: push_db
       uses: redhat-actions/push-to-registry@v2
       with:
         image: ${{ steps.containerize.outputs.image }}
