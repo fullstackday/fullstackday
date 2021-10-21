@@ -37,7 +37,7 @@ jobs:
         image: fullstackday/client
         tags: v1 ${{ github.sha }} latest
         containerfiles: |
-          ./Dockerfile
+          ./client/Dockerfile
     - name: Push to registry
       id: push
       uses: redhat-actions/push-to-registry@v2
@@ -66,7 +66,7 @@ jobs:
         image: fullstackday/backend
         tags: v1 ${{ github.sha }} latest
         containerfiles: |
-          ./Dockerfile.backend
+          ./backend/Dockerfile.backend
     - name: Push to registry
       id: push
       uses: redhat-actions/push-to-registry@v2
@@ -83,7 +83,7 @@ jobs:
         image: fullstackday/mongodb
         tags: v1 ${{ github.sha }} latest
         containerfiles: |
-          ./Dockerfile
+          ./backend/Dockerfile
     - name: Push to registry
       id: push_db
       uses: redhat-actions/push-to-registry@v2
