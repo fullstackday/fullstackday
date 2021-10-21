@@ -78,7 +78,7 @@ jobs:
         username: fullstackday
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - name: Containerize DB
-      id: containerize
+      id: containerize_db
       uses: redhat-actions/buildah-build@v2
       with:
         image: fullstackday/mongodb
@@ -86,7 +86,7 @@ jobs:
         containerfiles: |
           ./Dockerfile
     - name: Push to registry
-      id: push
+      id: push_db
       uses: redhat-actions/push-to-registry@v2
       with:
         image: ${{ steps.containerize.outputs.image }}
