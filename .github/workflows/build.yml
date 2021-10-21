@@ -34,7 +34,7 @@ jobs:
       id: containerize
       uses: redhat-actions/buildah-build@v2
       with:
-        image: fullstackday/client
+        image: client
         tags: v1 ${{ github.sha }} latest
         containerfiles: |
           ./containers/containerfiles/Dockerfile.client
@@ -63,7 +63,7 @@ jobs:
       id: containerize
       uses: redhat-actions/buildah-build@v2
       with:
-        image: fullstackday/backend
+        image: backend
         tags: v1 ${{ github.sha }} latest
         containerfiles: |
           ./containers/containerfiles/Dockerfile.backend
@@ -80,7 +80,7 @@ jobs:
       id: containerize_db
       uses: redhat-actions/buildah-build@v2
       with:
-        image: fullstackday/mongodb
+        image: mongodb
         tags: v1 ${{ github.sha }} latest
         containerfiles: |
           ./containers/containerfiles/Dockerfile/mongodb
