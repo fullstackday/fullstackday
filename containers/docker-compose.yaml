@@ -1,7 +1,7 @@
 version: "3"
 services:
   mongo:
-    image: fullstackday/mongo
+    image: fullstackday/mongodb
     ports:
     - "27017:27017"
   backend:
