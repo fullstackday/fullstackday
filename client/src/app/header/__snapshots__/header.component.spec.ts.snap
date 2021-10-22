@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderComponent should match snapshot 1`] = `
+<app-header
+  __ngContext__={[Function LRootView]}
+>
+  <mat-toolbar
+    color="primary"
+  >
+    <mat-toolbar-row>
+      <button
+        mat-button=""
+        mattooltip="Work Schedule"
+        routerlink="/"
+      >
+         WorkSchedule
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</app-header>
+`;
