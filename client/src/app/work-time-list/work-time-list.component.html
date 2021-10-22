@@ -1,39 +1,43 @@
-<div *ngIf="workItems; else noProjects" >
-    <table class="example-container mat-elevation-z8"mat-table [dataSource]="workItems">
+<div *ngIf="workItems; else noProjects">
+    <table [dataSource]="workItems" class="example-container mat-elevation-z8" mat-table>
         <ng-container matColumnDef="project">
-            <th mat-header-cell *matHeaderCellDef>Projekt Name</th>
-            <td mat-cell *matCellDef="let element"> {{element.project}} </td>
+            <th *matHeaderCellDef mat-header-cell>Projekt Name</th>
+            <td *matCellDef="let element" mat-cell> {{element.project}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="start">
-            <th mat-header-cell *matHeaderCellDef>Start</th>
-            <td mat-cell *matCellDef="let element"> {{element.start | date:'medium'}} </td>
+            <th *matHeaderCellDef mat-header-cell>Start</th>
+            <td *matCellDef="let element" mat-cell> {{element.start | date:'medium'}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="end">
-            <th mat-header-cell *matHeaderCellDef>Ende</th>
-            <td mat-cell *matCellDef="let element"> {{element.end | date: 'medium'}} </td>
+            <th *matHeaderCellDef mat-header-cell>Ende</th>
+            <td *matCellDef="let element" mat-cell> {{element.end | date: 'medium'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="comment">
-            <th mat-header-cell *matHeaderCellDef>Kommentar</th>
-            <td mat-cell *matCellDef="let element"> {{element.comment }} </td>
+            <th *matHeaderCellDef mat-header-cell>Kommentar</th>
+            <td *matCellDef="let element" mat-cell> {{element.comment }} </td>
         </ng-container>
 
-          <ng-container matColumnDef="edit">
-         <th mat-header-cell *matHeaderCellDef>  </th>
-              <td mat-cell *matCellDef="let element"><button mat-button (click)="editItem(element._id)" >Edit</button> </td>
-          </ng-container>
+        <ng-container matColumnDef="edit">
+            <th *matHeaderCellDef mat-header-cell></th>
+            <td *matCellDef="let element" mat-cell>
+                <button (click)="editItem(element._id)" mat-button>Edit</button>
+            </td>
+        </ng-container>
 
-          <ng-container matColumnDef="delete">
-           <th mat-header-cell *matHeaderCellDef>  </th>
-              <td mat-cell *matCellDef="let element"><button mat-button (click)="deleteItem(element._id)" >Delete</button> </td>
-          </ng-container>
+        <ng-container matColumnDef="delete">
+            <th *matHeaderCellDef mat-header-cell></th>
+            <td *matCellDef="let element" mat-cell>
+                <button (click)="deleteItem(element._id)" mat-button>Delete</button>
+            </td>
+        </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
     </table>
 </div>
 

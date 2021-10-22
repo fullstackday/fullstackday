@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { WorkItem } from '../models/WorkItem';
-import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
-import { concatMap, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class WorkItemApiService {
     private readonly ApiUrl: string = 'http://localhost:3000/records'
-    private workItems: ReplaySubject<WorkItem> = new ReplaySubject<WorkItem>(1);
-    workItems$ = this.workItems.asObservable();
 
     constructor(private readonly http: HttpClient) {
     }

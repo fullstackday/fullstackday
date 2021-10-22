@@ -1,8 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { WorkItemApiService } from '../services/work-item-api.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { WorkItem } from '../models/WorkItem';
-import { take } from 'rxjs/operators';
 
 @Component({
     selector: 'app-work-time-list',

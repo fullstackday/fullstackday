@@ -25,13 +25,13 @@ export class AppComponent implements OnInit {
         )
     }
 
-    openForm(id? : string) {
+    openForm(id?: string) {
         let dialogRef;
 
         if (id) {
-            dialogRef = this.dialog.open(WorkTimeEditorComponent, {data: {id}} );
+            dialogRef = this.dialog.open(WorkTimeEditorComponent, {data: {id}});
         } else {
-            dialogRef = this.dialog.open(WorkTimeEditorComponent, );
+            dialogRef = this.dialog.open(WorkTimeEditorComponent,);
         }
 
         dialogRef.afterClosed().pipe(
@@ -42,11 +42,11 @@ export class AppComponent implements OnInit {
         });
     }
 
-    edit(id : string) {
+    edit(id: string) {
         this.openForm(id);
     }
 
-    delete(id : string) {
+    delete(id: string) {
         this.workItemApiService.delete(id).subscribe(workItems => {
             this.workItems.next(workItems);
         })

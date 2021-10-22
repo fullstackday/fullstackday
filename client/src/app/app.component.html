@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div class="container" *ngIf="workItemList$ | async as workItemList">
+<div *ngIf="workItemList$ | async as workItemList" class="container">
     <app-work-time-list (delete)="delete($event)" (edit)="edit($event)" [workItems]="workItemList"></app-work-time-list>
-    <button mat-raised-button color="primary" (click)="openForm()">Track Work</button>
+    <button (click)="openForm()" color="primary" mat-raised-button>Track Work</button>
 </div>

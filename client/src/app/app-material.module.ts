@@ -13,33 +13,31 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  exports: [
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatIconModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    NgxMaterialTimepickerModule,
-    MatProgressBarModule,
-    MatTableModule,
-    MatDialogModule,
-  ],
-  providers: [
-    MatDatepickerModule,
-  ],
+    exports: [
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatIconModule,
+        MatMenuModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        MatSnackBarModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatProgressBarModule,
+        MatTableModule,
+        MatDialogModule,
+    ],
+    providers: [
+        MatDatepickerModule,
+    ],
 })
 export class AppMaterialModule {
 }

@@ -1,34 +1,34 @@
-<form [formGroup]="workItemForm" (ngSubmit)="saveItem()">
+<form (ngSubmit)="saveItem()" [formGroup]="workItemForm">
     <div class="full-width">
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field appearance="fill" class="full-width">
             <mat-label>Projekt Name</mat-label>
             <input formControlName="project" matInput placeholder="Name des Projektes">
         </mat-form-field>
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field appearance="fill" class="full-width">
             <mat-label>Datum</mat-label>
-            <input formControlName="date" matInput [matDatepicker]="startdate">
-            <mat-datepicker-toggle matSuffix [for]="startdate"></mat-datepicker-toggle>
+            <input [matDatepicker]="startdate" formControlName="date" matInput>
+            <mat-datepicker-toggle [for]="startdate" matSuffix></mat-datepicker-toggle>
             <mat-datepicker #startdate></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field appearance="fill" class="full-width">
             <mat-label>Start</mat-label>
-            <input placeholder="Start" matInput formControlName="start" >
+            <input formControlName="start" matInput placeholder="Start">
         </mat-form-field>
 
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field appearance="fill" class="full-width">
             <mat-label>Ende</mat-label>
-            <input placeholder="Ende" matInput formControlName="end">
+            <input formControlName="end" matInput placeholder="Ende">
         </mat-form-field>
 
-        <mat-form-field class="full-width" appearance="fill">
+        <mat-form-field appearance="fill" class="full-width">
             <mat-label>Kommentar</mat-label>
             <input formControlName="comment" matInput placeholder="Kommentar">
         </mat-form-field>
     </div>
     <mat-card-actions align="end">
         <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="!workItemForm.valid">Save</button>
+        <button [disabled]="!workItemForm.valid" color="primary" mat-raised-button type="submit">Save</button>
     </mat-card-actions>
 </form>
 

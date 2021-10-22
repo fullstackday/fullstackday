@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as moment from 'moment';
 import { WorkItemApiService } from '../services/work-item-api.service';
 import { WorkItem } from '../models/WorkItem';
 import { take } from 'rxjs/operators';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DateTimeCalculatorService } from '../services/date-time-calculator.service';
 
 @Component({
     selector: 'app-work-time-editor',
@@ -20,7 +20,9 @@ export class WorkTimeEditorComponent implements OnInit {
         comment: [ '' ]
     });
 
-    constructor(private readonly formBuilder: FormBuilder, private readonly workItemApiService: WorkItemApiService,
+    constructor(private readonly formBuilder: FormBuilder,
+                private readonly workItemApiService: WorkItemApiService,
+                private readonly dateTimeCalculator: DateTimeCalculatorService,
                 private readonly matDialogRef: MatDialogRef<WorkTimeEditorComponent>,
                 @Inject(MAT_DIALOG_DATA) public data?: { id: string }) {
     }
@@ -30,8 +32,13 @@ export class WorkTimeEditorComponent implements OnInit {
             this.workItemApiService.getById(this.data.id).pipe(
                 take(1),
             ).subscribe(workItem => {
-                this.workItemForm.controls['project'].setValue( workItem.project);
-                this.workItemForm.controls['comment'].setValue( workItem.comment);
+                const {hours, minutes, rawDate} = this.dateTimeCalculator.getDateTimeFromMilliSeconds(workItem.start)
+
+                this.workItemForm.controls[ 'project' ].setValue(workItem.project);
+                this.workItemForm.controls[ 'comment' ].setValue(workItem.comment);
+                this.workItemForm.controls[ 'start' ].setValue(`${hours}:${minutes}`);
+                this.workItemForm.controls[ 'end' ].setValue(`${hours}:${minutes}`);
+                this.workItemForm.controls[ 'date' ].setValue(new Date(rawDate));
             })
         }
 
@@ -40,14 +47,11 @@ export class WorkTimeEditorComponent implements OnInit {
     saveItem(): void {
         const startTime = this.workItemForm.value.start.split(':');
         const endTime = this.workItemForm.value.end.split(':');
-
-        const date = moment(this.workItemForm.value.date);
-        const start = moment(date.add(+startTime[ 0 ], 'hours').add(+startTime[ 1 ], 'minutes'));
-        const end = moment(date.add(+endTime, 'hours').add(+endTime[ 1 ], 'minutes'));
+        const date = this.workItemForm.value.date;
 
         const workItem = {
-            start: start.valueOf(),
-            end: end.valueOf(),
+            start: this.dateTimeCalculator.convertDatetimeInMilliseconds(startTime, date),
+            end: this.dateTimeCalculator.convertDatetimeInMilliseconds(endTime, date),
             project: this.workItemForm.value.project,
             comment: this.workItemForm.value.comment
         } as WorkItem;
