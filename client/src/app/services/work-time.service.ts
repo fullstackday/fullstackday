@@ -1,15 +1,26 @@
 import {Injectable} from '@angular/core';
-import * as moment from "moment/moment";
+import * as moment from 'moment/moment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkTimeService {
 
-  public addTimePeriodToDate(currentDateAsString: string, hours: number, minutes: number): number {
-    const currentDate = moment(currentDateAsString);
-    const newDate = moment(currentDate.add(hours, 'hours').add(minutes, 'minutes'));
+  public addTimePeriodToTimestamp(currentDate: Date, hoursAndMinutesAsString: string): number {
+    const currentDateAsMoment = moment(currentDate);
+    const hoursAndMinutes: string[] = hoursAndMinutesAsString.split(':');
+    const hours: number = +hoursAndMinutes[0];
+    const minutes: number = +hoursAndMinutes[1];
 
-    return newDate.valueOf();
+    if (!currentDateAsMoment || !this.validTimeperiod(hours, minutes)) {
+      throw new Error('invalid input');
+    }
+
+    const newTimestamp = moment(currentDateAsMoment.add(hours, 'hours').add(minutes, 'minutes'));
+    return newTimestamp.valueOf();
+  }
+
+  private validTimeperiod(hours: number, minutes: number): boolean {
+    return !(isNaN(hours) || hours < 0 || isNaN(minutes) || minutes < 0);
   }
 }
