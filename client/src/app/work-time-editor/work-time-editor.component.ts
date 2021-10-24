@@ -32,13 +32,14 @@ export class WorkTimeEditorComponent implements OnInit {
             this.workItemApiService.getById(this.data.id).pipe(
                 take(1),
             ).subscribe(workItem => {
-                const {hours, minutes, rawDate} = this.dateTimeCalculator.getDateTimeFromMilliSeconds(workItem.start)
+                const {hours: startHours, minutes: startMinutes, date} = this.dateTimeCalculator.getDateTimeFromMilliSeconds(workItem.start)
+                const {hours: endHours, minutes: endMinutes } = this.dateTimeCalculator.getDateTimeFromMilliSeconds(workItem.end)
 
                 this.workItemForm.controls[ 'project' ].setValue(workItem.project);
                 this.workItemForm.controls[ 'comment' ].setValue(workItem.comment);
-                this.workItemForm.controls[ 'start' ].setValue(`${hours}:${minutes}`);
-                this.workItemForm.controls[ 'end' ].setValue(`${hours}:${minutes}`);
-                this.workItemForm.controls[ 'date' ].setValue(new Date(rawDate));
+                this.workItemForm.controls[ 'start' ].setValue(`${startHours}:${startMinutes}`);
+                this.workItemForm.controls[ 'end' ].setValue(`${endHours}:${endMinutes}`);
+                this.workItemForm.controls[ 'date' ].setValue(new Date(date));
             })
         }
 

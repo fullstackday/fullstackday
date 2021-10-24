@@ -14,12 +14,12 @@ export class DateTimeCalculatorService {
     }
 
     getDateTimeFromMilliSeconds(milliseconds: number) {
-        const dateWtihTime = new Date(milliseconds)
-        const rawDate = dateWtihTime.setHours(0, 0, 0, 0)
+        const dateWithTime = new Date(milliseconds)
+
         return {
-            hours: dateWtihTime.getHours(),
-            minutes: dateWtihTime.getMinutes(),
-            rawDate
+            hours: dateWithTime.getHours(),
+            minutes: dateWithTime.getMinutes(),
+            date: dateWithTime.setHours(0, 0, 0, 0)
         }
     }
 
