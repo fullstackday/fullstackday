@@ -17,7 +17,6 @@ function App() {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Layout>
           <CssBaseline />
-          Hello iJS!
           <TimeRecordsScene />
         </Layout>
       </LocalizationProvider>

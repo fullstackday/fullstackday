@@ -7,13 +7,16 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Button } from "@mui/material";
 
 interface Props {
   timeRecords: TimeRecord[];
+  onDeleteRecord: (record: TimeRecord) => void;
 }
 
 export const TimeRecordsTable: React.FunctionComponent<Props> = ({
   timeRecords,
+  onDeleteRecord,
 }) => {
   return (
     <TableContainer component={Paper}>
@@ -23,6 +26,7 @@ export const TimeRecordsTable: React.FunctionComponent<Props> = ({
             <TableCell>Project</TableCell>
             <TableCell align="right">Start</TableCell>
             <TableCell align="right">End</TableCell>
+            <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -39,6 +43,11 @@ export const TimeRecordsTable: React.FunctionComponent<Props> = ({
               </TableCell>
               <TableCell align="right">
                 {timeRecord.end.toLocaleString()}
+              </TableCell>
+              <TableCell>
+                <Button onClick={() => onDeleteRecord(timeRecord)}>
+                  Delete
+                </Button>
               </TableCell>
             </TableRow>
           ))}
