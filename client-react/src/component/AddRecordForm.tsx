@@ -10,17 +10,19 @@ export type AddRecordFormValues = Omit<TimeRecord, "_id">;
 interface Props {
   onSubmit: (values: AddRecordFormValues) => void;
   isLoading: boolean;
+  record?: TimeRecord;
 }
 
 export const AddRecordForm: React.FunctionComponent<Props> = ({
   onSubmit,
   isLoading,
+  record,
 }) => {
   const {
     handleSubmit,
     control,
     formState: { errors, isValid },
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: "onChange", defaultValues: record });
   console.log(errors);
 
   return (

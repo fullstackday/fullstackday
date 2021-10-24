@@ -1,20 +1,29 @@
 import React from "react";
-import { Control, Controller, UseControllerProps } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldValues,
+  UseControllerProps,
+} from "react-hook-form";
 import { TextField } from "@mui/material";
 
-interface Props {
-  control: Control;
-  name: string;
+interface Props<TFieldValues, TName> {
+  control: Control<TFieldValues>;
+  name: TName;
   label: string;
   rules?: UseControllerProps["rules"];
 }
 
-export const TextInput: React.FunctionComponent<Props> = ({
+export const TextInput = <
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+>({
   control,
   label,
   name,
   rules,
-}) => {
+}: Props<TFieldValues, TName>) => {
   return (
     <Controller
       name={name}

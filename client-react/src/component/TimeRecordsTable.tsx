@@ -12,11 +12,13 @@ import { Button } from "@mui/material";
 interface Props {
   timeRecords: TimeRecord[];
   onDeleteRecord: (record: TimeRecord) => void;
+  onEditRecord: (record: TimeRecord) => void;
 }
 
 export const TimeRecordsTable: React.FunctionComponent<Props> = ({
   timeRecords,
   onDeleteRecord,
+  onEditRecord,
 }) => {
   return (
     <TableContainer component={Paper}>
@@ -45,6 +47,7 @@ export const TimeRecordsTable: React.FunctionComponent<Props> = ({
                 {timeRecord.end.toLocaleString()}
               </TableCell>
               <TableCell>
+                <Button onClick={() => onEditRecord(timeRecord)}>Edit</Button>
                 <Button onClick={() => onDeleteRecord(timeRecord)}>
                   Delete
                 </Button>

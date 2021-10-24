@@ -6,6 +6,7 @@ import Modal from "@mui/material/Modal";
 import { AddRecordForm } from "./AddRecordForm";
 import { LinearProgress } from "@mui/material";
 import { useAddRecord } from "../hook/useAddRecord";
+import { TimeRecordFormModal } from "./TimeRecordFormModal";
 
 const style = {
   position: "absolute" as "absolute",
@@ -19,7 +20,7 @@ const style = {
 
 interface Props {}
 
-export const AddRecordModal: React.FunctionComponent<Props> = () => {
+export const AddRecordButton: React.FunctionComponent<Props> = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -33,24 +34,12 @@ export const AddRecordModal: React.FunctionComponent<Props> = () => {
   return (
     <>
       <Button onClick={handleOpen}>Track Work</Button>
-      <Modal
+      <TimeRecordFormModal
         open={open}
+        isLoading={isLoading}
+        onSubmit={addRecord}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box>
-          <Box sx={style}>
-            <Box sx={{ p: 4 }}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Create a new Record
-              </Typography>
-              <AddRecordForm onSubmit={addRecord} isLoading={isLoading} />
-            </Box>
-            {isLoading && <LinearProgress />}
-          </Box>
-        </Box>
-      </Modal>
+      />
     </>
   );
 };
