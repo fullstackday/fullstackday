@@ -24,11 +24,6 @@ jobs:
         working-directory: client
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Install and run tests
-      run: |
-        npm install
     - name: Cypress run
       uses: cypress-io/github-action@v2
       with:

@@ -5,7 +5,7 @@ describe('Workschedule', () => {
   beforeEach(() => {
     cy.intercept('POST', '**/records',  {}).as('postRecords');
 
-    cy.visit('http://localhost:4200/');
+    cy.visit('http://127.0.0.1:4200/');
   });
 
   it('should show new item after adding', () => {
