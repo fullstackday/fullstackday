@@ -7,7 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     RecordsModule,
-    MongooseModule.forRoot('mongodb://localhost/timetracker'),
+    MongooseModule.forRoot('mongodb://mongo/timetracker'),
     // MongooseModule.forRoot('mongodb://mongo/timetracker'),
   ],
   controllers: [AppController],
