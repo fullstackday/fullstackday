@@ -57,3 +57,10 @@ docker run -d -p 27017:27017 --name fsday-mongodb --rm --network fsday-mern mong
 docker run -d --rm --name server -p 5000:5000 --network fsday-mern fullstackday/fsday-mern-server
 ## Test the server
 curl localhost:5000/data
+
+docker build -t fullstackday/client -f Dockerfile.back .
+docker build -t fullstackday/backend -f Dockerfile.client .
+docker build -t fullstackday/mongodb -f Dockerfile.mongodb .
+docker run -d -p 27017:27017 --rm --name mongo fullstackday/mongodb
+docker run -d -p 3000:3000 --rm --name backend fullstackday/backend
+docker run -d -p 8080:80 --rm --name client fullstackday/client
