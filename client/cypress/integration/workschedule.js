@@ -33,8 +33,7 @@ describe('Workschedule', () => {
           .type('42');
 
         cy.get('[data-testid="save-button"]')
-          .click()
-          .should('not.exist');
+          .click();
       });
 
   })
