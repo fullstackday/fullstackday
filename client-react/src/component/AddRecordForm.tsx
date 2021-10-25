@@ -23,7 +23,6 @@ export const AddRecordForm: React.FunctionComponent<Props> = ({
     control,
     formState: { errors, isValid },
   } = useForm({ mode: "onChange", defaultValues: record });
-  console.log(errors);
 
   return (
     <Container
