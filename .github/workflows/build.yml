@@ -34,12 +34,9 @@ jobs:
       with:
         install-command: npm install
         build: npm run build
-        start: npm run cy:run
+        start: npm run start
         spec: cypress/integration/**/*.js
-        record: true
         working-directory: client
-      env:
-        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
     - name: Containerize
       id: containerize
       uses: redhat-actions/buildah-build@v2
