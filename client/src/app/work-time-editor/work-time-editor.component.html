@@ -2,33 +2,40 @@
     <div class="full-width">
         <mat-form-field appearance="fill" class="full-width">
             <mat-label>Projekt Name</mat-label>
-            <input formControlName="project" matInput placeholder="Name des Projektes">
+            <input formControlName="project" matInput placeholder="Name des Projektes"
+                    data-testid="input-project-name">
         </mat-form-field>
         <mat-form-field appearance="fill" class="full-width">
             <mat-label>Datum</mat-label>
-            <input [matDatepicker]="startdate" formControlName="date" matInput>
+            <input [matDatepicker]="startdate" formControlName="date" matInput
+                   data-testid="input-start-date">
             <mat-datepicker-toggle [for]="startdate" matSuffix></mat-datepicker-toggle>
             <mat-datepicker #startdate></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="full-width">
             <mat-label>Start</mat-label>
-            <input formControlName="start" matInput placeholder="Start">
+            <input formControlName="start" matInput placeholder="Start"
+                   data-testid="input-start-time">
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="full-width">
             <mat-label>Ende</mat-label>
-            <input formControlName="end" matInput placeholder="Ende">
+            <input formControlName="end" matInput placeholder="Ende"
+                   data-testid="input-end-time">
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="full-width">
             <mat-label>Kommentar</mat-label>
-            <input formControlName="comment" matInput placeholder="Kommentar">
+            <input formControlName="comment" matInput placeholder="Kommentar"
+                   data-testid="input-comment">
         </mat-form-field>
     </div>
     <mat-card-actions align="end">
         <button mat-button mat-dialog-close>Cancel</button>
-        <button [disabled]="!workItemForm.valid" color="primary" mat-raised-button type="submit">Save</button>
+        <button [disabled]="!workItemForm.valid" color="primary" mat-raised-button type="submit"
+                data-testid="save-button">
+          Save</button>
     </mat-card-actions>
 </form>
 
