@@ -9,11 +9,12 @@ exports[`HeaderComponent should match snapshot 1`] = `
   >
     <mat-toolbar-row>
       <button
+        data-testid="home-button"
         mat-button=""
         mattooltip="Work Schedule"
         routerlink="/"
       >
-         WorkSchedule
+         WorkSchedule 
       </button>
     </mat-toolbar-row>
   </mat-toolbar>
