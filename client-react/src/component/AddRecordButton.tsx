@@ -1,10 +1,5 @@
 import React from "react";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import { AddRecordForm } from "./AddRecordForm";
-import { LinearProgress } from "@mui/material";
 import { useAddRecord } from "../hook/useAddRecord";
 import { TimeRecordFormModal } from "./TimeRecordFormModal";
 
