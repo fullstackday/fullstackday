@@ -35,7 +35,7 @@ jobs:
         install-command: npm install
         build: npm run build
         start: npm run cy:run
-        spec: cypress/integration/**/*.ts
+        spec: client/cypress/integration/**/*.ts
         record: true
         working-directory: client
       env:
