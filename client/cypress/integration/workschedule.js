@@ -3,7 +3,7 @@
 describe('Workschedule', () => {
 
   beforeEach(() => {
-    cy.intercept('POST', '**/records').as('postRecords');
+    cy.intercept('POST', '**/records',  {}).as('postRecords');
 
     cy.visit('http://localhost:4200/');
   });
@@ -37,6 +37,5 @@ describe('Workschedule', () => {
           .should('not.exist');
       });
 
-      cy.wait('@postRecords').its('response.statusCode').should('be.oneOf', [201]);
   })
 });
