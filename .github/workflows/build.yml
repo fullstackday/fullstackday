@@ -29,14 +29,6 @@ jobs:
     - name: Install and run tests
       run: |
         npm install
-    - name: Cypress run
-      uses: cypress-io/github-action@v2
-      with:
-        install-command: npm install
-        build: npm run build
-        start: npm run start
-        spec: cypress/integration/**/*.js
-        working-directory: client
     - name: Containerize
       id: containerize
       uses: redhat-actions/buildah-build@v2
