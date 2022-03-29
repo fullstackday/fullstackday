@@ -1,12 +1,12 @@
 <form (ngSubmit)="saveItem()" [formGroup]="workItemForm">
     <div class="full-width">
         <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Projekt Name</mat-label>
-            <input formControlName="project" matInput placeholder="Name des Projektes"
+            <mat-label>Project Name</mat-label>
+            <input formControlName="project" matInput placeholder="Name of the project"
                     data-testid="input-project-name">
         </mat-form-field>
         <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Datum</mat-label>
+            <mat-label>Date</mat-label>
             <input [matDatepicker]="startdate" formControlName="date" matInput
                    data-testid="input-start-date">
             <mat-datepicker-toggle [for]="startdate" matSuffix></mat-datepicker-toggle>
@@ -20,14 +20,14 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Ende</mat-label>
-            <input formControlName="end" matInput placeholder="Ende"
+            <mat-label>End</mat-label>
+            <input formControlName="end" matInput placeholder="End"
                    data-testid="input-end-time">
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Kommentar</mat-label>
-            <input formControlName="comment" matInput placeholder="Kommentar"
+            <mat-label>Comment</mat-label>
+            <input formControlName="comment" matInput placeholder="Comment"
                    data-testid="input-comment">
         </mat-form-field>
     </div>

@@ -1,7 +1,7 @@
 <div *ngIf="workItems; else noProjects">
     <table [dataSource]="workItems" class="example-container mat-elevation-z8" mat-table>
         <ng-container matColumnDef="project">
-            <th *matHeaderCellDef mat-header-cell>Projekt Name</th>
+            <th *matHeaderCellDef mat-header-cell>Project Name</th>
             <td *matCellDef="let element" mat-cell> {{element.project}} </td>
         </ng-container>
 
@@ -13,12 +13,12 @@
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="end">
-            <th *matHeaderCellDef mat-header-cell>Ende</th>
+            <th *matHeaderCellDef mat-header-cell>End</th>
             <td *matCellDef="let element" mat-cell> {{element.end | date: 'medium'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="comment">
-            <th *matHeaderCellDef mat-header-cell>Kommentar</th>
+            <th *matHeaderCellDef mat-header-cell>Comment</th>
             <td *matCellDef="let element" mat-cell> {{element.comment }} </td>
         </ng-container>
 
