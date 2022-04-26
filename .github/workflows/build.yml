@@ -29,6 +29,7 @@ jobs:
     - name: Install and run tests
       run: |
         npm install
+        npm run test
     - name: Containerize
       id: containerize
       uses: redhat-actions/buildah-build@v2
