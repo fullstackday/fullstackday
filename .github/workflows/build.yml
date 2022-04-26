@@ -33,8 +33,7 @@ jobs:
     - name: Cypress run
       uses: cypress-io/github-action@v2
       with:
-        back: cd backend && npm install && npm start
-        client: cd client && npm install && npm start
+        start: ./start.sh
     - name: Containerize
       id: containerize
       uses: redhat-actions/buildah-build@v2
