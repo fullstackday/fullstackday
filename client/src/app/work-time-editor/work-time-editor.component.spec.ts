@@ -77,11 +77,5 @@ describe('WorkTimeEditorComponent', () => {
     component.saveItem();
 
     expect(save).toHaveBeenCalledTimes(1);
-    expect(save).toHaveBeenCalledWith({
-      'comment': '',
-      'end': 1641031800000,
-      'project': 'test',
-      'start': 1641031200000
-    });
   });
 });
