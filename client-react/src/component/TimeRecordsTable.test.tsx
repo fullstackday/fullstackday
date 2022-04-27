@@ -29,8 +29,6 @@ describe("<TimeRecordsTable />", () => {
       />
     );
 
-    screen.getByRole("rowheader", {
-      name: /international javascript conference/i,
-    });
+    screen.getByText("International JavaScript Conference");
   });
 });
