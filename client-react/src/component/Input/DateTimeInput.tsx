@@ -34,7 +34,12 @@ export const DateTimeInput = <
       render={({ field, fieldState }) => (
         <DateTimePicker
           renderInput={(props) => (
-            <TextField {...props} error={fieldState.invalid} fullWidth />
+            <TextField
+              {...props}
+              error={fieldState.invalid}
+              fullWidth
+              aria-label={label}
+            />
           )}
           label={label}
           {...field}

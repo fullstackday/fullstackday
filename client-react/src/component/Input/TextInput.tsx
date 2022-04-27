@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 import {
   Control,
   Controller,
@@ -12,6 +12,7 @@ interface Props<TFieldValues, TName> {
   control: Control<TFieldValues>;
   name: TName;
   label: string;
+  type?: ComponentProps<typeof TextField>["type"];
   rules?: UseControllerProps["rules"];
 }
 
@@ -23,6 +24,7 @@ export const TextInput = <
   label,
   name,
   rules,
+  type,
 }: Props<TFieldValues, TName>) => {
   return (
     <Controller
@@ -32,7 +34,12 @@ export const TextInput = <
       render={({ field, fieldState }) => (
         <TextField
           label={label}
+          type={type}
+          InputLabelProps={{
+            shrink: true,
+          }}
           {...field}
+          aria-label={label}
           error={fieldState.invalid}
           fullWidth
         />

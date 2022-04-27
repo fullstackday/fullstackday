@@ -5,8 +5,8 @@
     "dev": "vite --port=3001",
     "build": "tsc && vite build",
     "serve": "vite --port=3001 preview",
-    "test": "jest --maxWorkers=1",
-    "test:watch": "jest --watch --maxWorkers=1"
+    "test": "TZ=UTC jest --maxWorkers=1",
+    "test:watch": "TZ=UTC jest --watch --maxWorkers=1"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
@@ -23,6 +23,8 @@
     "react-query": "^3.34.19"
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.12.0",
+    "@testing-library/user-event": "^14.0.4",
     "@types/jest": "^27.4.1",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
