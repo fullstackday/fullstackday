@@ -4,7 +4,7 @@ import { HeaderComponent } from './header.component';
 import { MockModule } from 'ng-mocks';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-describe('HeaderComponent', () => {
+xdescribe('HeaderComponent', () => {
     let component: HeaderComponent;
     let fixture: ComponentFixture<HeaderComponent>;
 
