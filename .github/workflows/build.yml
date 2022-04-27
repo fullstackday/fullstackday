@@ -17,3 +17,82 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  build-client:
+    defaults:
+      run: 
+        working-directory: client
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install and run tests
+      run: |
+        npm install
+        npm run test
+    - name: Containerize
+      id: containerize
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: client
+        tags: v1 ${{ github.sha }} latest
+        containerfiles: |
+          ./containers/containerfiles/Dockerfile.client
+    - name: Push to registry
+      id: push
+      uses: redhat-actions/push-to-registry@v2
+      with:
+        image: ${{ steps.containerize.outputs.image }}
+        tags: ${{ steps.containerize.outputs.tags }}
+        registry: docker.io/fullstackday
+        username: fullstackday
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+  build-backend-and-db:
+    defaults:
+      run: 
+        working-directory: backend
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install and run tests
+      run: |
+        npm install
+    - name: Containerize
+      id: containerize
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: backend
+        tags: v1 ${{ github.sha }} latest
+        containerfiles: |
+          ./containers/containerfiles/Dockerfile.backend
+    - name: Push to registry
+      id: push
+      uses: redhat-actions/push-to-registry@v2
+      with:
+        image: ${{ steps.containerize.outputs.image }}
+        tags: ${{ steps.containerize.outputs.tags }}
+        registry: docker.io/fullstackday
+        username: fullstackday
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: Containerize DB
+      id: containerize_db
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: mongodb
+        tags: v1 ${{ github.sha }} latest
+        containerfiles: |
+          ./containers/containerfiles/Dockerfile.mongodb
+    - name: Push to registry
+      id: push_db
+      uses: redhat-actions/push-to-registry@v2
+      with:
+        image: ${{ steps.containerize.outputs.image }}
+        tags: ${{ steps.containerize.outputs.tags }}
+        registry: docker.io/fullstackday
+        username: fullstackday
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    
+    - name: Finish
+      run: echo "Image pushed to ${{ steps.push.outputs.registry-paths }}"
