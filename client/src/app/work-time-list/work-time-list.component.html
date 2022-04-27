@@ -1,7 +1,7 @@
-<div *ngIf="workItems; else noProjects">
+<ng-container  *ngIf="workItems; else noProjects">
     <table [dataSource]="workItems" class="example-container mat-elevation-z8" mat-table>
         <ng-container matColumnDef="project">
-            <th *matHeaderCellDef mat-header-cell>Project Name</th>
+            <th *matHeaderCellDef mat-header-cell>Project abc</th>
             <td *matCellDef="let element" mat-cell> {{element.project}} </td>
         </ng-container>
 
@@ -39,7 +39,7 @@
         <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
         <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
     </table>
-</div>
+</ng-container>
 
 
 <ng-template #noProjects>

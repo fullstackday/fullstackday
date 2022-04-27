@@ -1,0 +1,6 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "fsd",
+  "webDir": "dist/client",
+  "bundledWebRuntime": false
+}

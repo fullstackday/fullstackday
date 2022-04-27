@@ -5,6 +5,7 @@ import { WorkItem } from '../models/WorkItem';
 import { take } from 'rxjs/operators';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DateTimeCalculatorService } from '../services/date-time-calculator.service';
+import { Camera, CameraResultType, Photo } from '@capacitor/camera';
 
 @Component({
     selector: 'app-work-time-editor',
@@ -19,6 +20,8 @@ export class WorkTimeEditorComponent implements OnInit {
         end: [ '', [ Validators.required ] ],
         comment: [ '' ]
     });
+
+    img: string | undefined;
 
     constructor(private readonly formBuilder: FormBuilder,
                 private readonly workItemApiService: WorkItemApiService,
@@ -67,4 +70,13 @@ export class WorkTimeEditorComponent implements OnInit {
                 .subscribe((workItems) => this.matDialogRef.close(workItems));
         }
     }
+
+  async addPicture() {
+      const image: Photo = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: true,
+        resultType: CameraResultType.DataUrl
+      });
+      this.img = image.dataUrl;
+  }
 }

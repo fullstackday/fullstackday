@@ -39,3 +39,6 @@
     </mat-card-actions>
 </form>
 
+<button mat-raised-button (click)="addPicture()">Add Picture</button>
+<img *ngIf="img" src="{{img}}" alt="">
+

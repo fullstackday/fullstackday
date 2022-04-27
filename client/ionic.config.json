@@ -1,0 +1,12 @@
+{
+  "defaultProject": "client",
+  "projects": {
+    "client": {
+      "name": "fsd",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular"
+    }
+  }
+}

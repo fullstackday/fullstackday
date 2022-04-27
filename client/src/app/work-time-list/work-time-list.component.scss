@@ -1,6 +1,11 @@
 .example-container {
-  min-width: 900px;
+  width: 100%;
   overflow: auto;
+}
+
+:host {
+  display: flex;
+  flex-grow: 1;
 }
 
 table {
