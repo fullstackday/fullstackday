@@ -30,10 +30,6 @@ jobs:
       run: |
         npm install
         npm run test
-    - name: Cypress run
-      uses: cypress-io/github-action@v2
-      with:
-        start: start.sh
     - name: Containerize
       id: containerize
       uses: redhat-actions/buildah-build@v2
