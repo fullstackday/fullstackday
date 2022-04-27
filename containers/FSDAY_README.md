@@ -1,3 +1,8 @@
+docker run -v $(pwd)/lamp_html:/var/www/html -p 8080:80 --name fsday --rm -d php:7.4-apache
+docker run -v $(pwd)/node_src:/opt/app -d --rm -p 5000:5000 --name fsday node:14 node /opt/app/simple
+docker run -v $(pwd)/node_src:/opt/app -d --rm -p 5000:5000 --name fsday node:18 node /opt/app/simple
+
+
 docker network create fullstackday
 cd ../backend
 * Change src/app.module.ts to use mongodb://mongo
