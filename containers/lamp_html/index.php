@@ -8,7 +8,7 @@ if (!$name) $name = "World";
   <body>
     <h1>
       Hello iJS, welcome to 
-      <?= $name ?>
+      <?= $name ?> whatever
     </h1>
   </body>
 </html>
